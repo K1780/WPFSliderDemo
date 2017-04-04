@@ -5,8 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFSliderDemo"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        Title="MainWindow" Height="539.497" Width="525">
+    <Grid x:Name="myGrid" Margin="7,14,0,-3" RenderTransformOrigin="0.5,0.5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="443*"/>
+            <RowDefinition Height="0*"/>
+            <RowDefinition Height="54*"/>
+        </Grid.RowDefinitions>
+
+
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" 
+                Height="100" Margin="10,33,0,0"  
+                 Text="{Binding ElementName=slider, Path=Value}" 
+                  FontSize="{Binding ElementName=slider, Path=Value}"
+                 Width="17"
+                 VerticalAlignment="Top"/>
+
+
+        <Slider x:Name="slider" HorizontalAlignment="Left"                          
+               VerticalAlignment="Top"
+                Maximum="100" Minimum="10" TickFrequency="10"
+                Width="{Binding ElementName=myGrid, Path=ActualWidth}" Margin="0,10,0,0" RenderTransformOrigin="0.5,0.5" Height="18">
+            <Slider.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.159"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Slider.RenderTransform>
+        </Slider>
+        <ProgressBar x:Name="myProgressBar" HorizontalAlignment="Left" Height="20" Margin="7,138,0,0" 
+                     VerticalAlignment="Top" Width="500" Value="{Binding Path=Happiness}"/>
+        <Button x:Name="button" Content="Add happiness" 
+                HorizontalAlignment="Left" Margin="10,163,0,0" VerticalAlignment="Top" Width="150"  Click="button_click" Height="20"/>
+
+        <Button x:Name="btnCreate" Content=" Luo uusi olio " Margin="0,200,20,195" Click="btnCreate_Click" />
+        <TextBlock x:Name="tbAnimal" FontSize="20" Text="{Binding Name}" Margin="7,324,3,89"/>
     </Grid>
 </Window>
